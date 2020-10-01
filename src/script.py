@@ -35,7 +35,7 @@ def parse_file(file, func):
     with jsonlines.open(file) as reader:
         for obj in reader:
             func(obj)
-
+        session.commit()
         if LOG:
             end_time = datetime.now()
             print(f'Duration: {end_time - start_time}\n')
@@ -236,5 +236,4 @@ else:
 if LOG:
     print_stats('Total:')
 
-session.commit()
 session.close()
