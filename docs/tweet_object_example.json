@@ -1,0 +1,413 @@
+{
+  "created_at": "Sat Aug 01 01:59:54 +0000 2020",
+  "id": 1289380305023848448,
+  "id_str": "1289380305023848448",
+  "full_text": "RT @somebadideas: We really going to let the politicians who did nothing about school shootings handle this one..?",
+  "truncated": false,
+  "display_text_range": [
+    0,
+    114
+  ],
+  "entities": {
+    "hashtags": [
+    ],
+    "symbols": [
+    ],
+    "user_mentions": [
+      {
+        "screen_name": "somebadideas",
+        "name": "Aaron Stewart-Ahn",
+        "id": 25484126,
+        "id_str": "25484126",
+        "indices": [
+          3,
+          16
+        ]
+      }
+    ],
+    "urls": [
+    ]
+  },
+  "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+  "in_reply_to_status_id": "None",
+  "in_reply_to_status_id_str": "None",
+  "in_reply_to_user_id": "None",
+  "in_reply_to_user_id_str": "None",
+  "in_reply_to_screen_name": "None",
+  "user": {
+    "id": 744234863008481280,
+    "id_str": "744234863008481280",
+    "name": "Sarah 😝😝",
+    "screen_name": "StepTFup_KAIyle",
+    "location": "",
+    "description": "",
+    "url": "None",
+    "entities": {
+      "description": {
+        "urls": [
+        ]
+      }
+    },
+    "protected": false,
+    "followers_count": 75,
+    "friends_count": 231,
+    "listed_count": 2,
+    "created_at": "Sat Jun 18 18:26:33 +0000 2016",
+    "favourites_count": 14124,
+    "utc_offset": "None",
+    "time_zone": "None",
+    "geo_enabled": false,
+    "verified": false,
+    "statuses_count": 36102,
+    "lang": "None",
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "F5F8FA",
+    "profile_background_image_url": "None",
+    "profile_background_image_url_https": "None",
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/1174701267106566147/YIeKB8ea_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1174701267106566147/YIeKB8ea_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/744234863008481280/1541005674",
+    "profile_image_extensions_alt_text": "None",
+    "profile_banner_extensions_alt_text": "None",
+    "profile_link_color": "1DA1F2",
+    "profile_sidebar_border_color": "C0DEED",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "has_extended_profile": true,
+    "default_profile": true,
+    "default_profile_image": false,
+    "following": false,
+    "follow_request_sent": false,
+    "notifications": false,
+    "translator_type": "none"
+  },
+  "geo": "None",
+  "coordinates": "None",
+  "place": "None",
+  "contributors": "None",
+  "retweeted_status": {
+    "created_at": "Sat Aug 01 00:47:13 +0000 2020",
+    "id": 1289362012523266049,
+    "id_str": "1289362012523266049",
+    "full_text": "We really going to let the politicians who did nothing about school shootings handle this one..? https://t.co/dAxlki9Sx4",
+    "truncated": false,
+    "display_text_range": [
+      0,
+      96
+    ],
+    "entities": {
+      "hashtags": [
+      ],
+      "symbols": [
+      ],
+      "user_mentions": [
+      ],
+      "urls": [
+        {
+          "url": "https://t.co/dAxlki9Sx4",
+          "expanded_url": "https://twitter.com/thehill/status/1289359451393155072",
+          "display_url": "twitter.com/thehill/status…",
+          "indices": [
+            97,
+            120
+          ]
+        }
+      ]
+    },
+    "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+    "in_reply_to_status_id": "None",
+    "in_reply_to_status_id_str": "None",
+    "in_reply_to_user_id": "None",
+    "in_reply_to_user_id_str": "None",
+    "in_reply_to_screen_name": "None",
+    "user": {
+      "id": 25484126,
+      "id_str": "25484126",
+      "name": "Aaron Stewart-Ahn",
+      "screen_name": "somebadideas",
+      "location": "Shadow Mountains, USA",
+      "description": "THE WITCHER: BLOOD ORIGIN ▫️ MANDY ▫️ THOR: METAL GODS ▫️ PARK in @dazed S/S 2020 ▫️Lee Chang-dong & SUNMI fan account",
+      "url": "https://t.co/5BDsU9Ciql",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/5BDsU9Ciql",
+              "expanded_url": "http://asahn.me",
+              "display_url": "asahn.me",
+              "indices": [
+                0,
+                23
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": [
+          ]
+        }
+      },
+      "protected": false,
+      "followers_count": 21956,
+      "friends_count": 3301,
+      "listed_count": 429,
+      "created_at": "Fri Mar 20 09:59:35 +0000 2009",
+      "favourites_count": 131256,
+      "utc_offset": "None",
+      "time_zone": "None",
+      "geo_enabled": false,
+      "verified": true,
+      "statuses_count": 9664,
+      "lang": "None",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "1A1B1F",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/1161105908480532480/efzfTRsQ_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/1161105908480532480/efzfTRsQ_normal.jpg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/25484126/1565664086",
+      "profile_image_extensions_alt_text": "None",
+      "profile_banner_extensions_alt_text": "None",
+      "profile_link_color": "8DAEB8",
+      "profile_sidebar_border_color": "181A1E",
+      "profile_sidebar_fill_color": "252429",
+      "profile_text_color": "666666",
+      "profile_use_background_image": true,
+      "has_extended_profile": false,
+      "default_profile": false,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false,
+      "translator_type": "none"
+    },
+    "geo": "None",
+    "coordinates": "None",
+    "place": "None",
+    "contributors": "None",
+    "is_quote_status": true,
+    "quoted_status_id": 1289359451393155072,
+    "quoted_status_id_str": "1289359451393155072",
+    "quoted_status_permalink": {
+      "url": "https://t.co/dAxlki9Sx4",
+      "expanded": "https://twitter.com/thehill/status/1289359451393155072",
+      "display": "twitter.com/thehill/status…"
+    },
+    "quoted_status": {
+      "created_at": "Sat Aug 01 00:37:03 +0000 2020",
+      "id": 1289359451393155072,
+      "id_str": "1289359451393155072",
+      "full_text": "Hundreds of kids test positive for coronavirus after one week at sleep-away camp: CDC report https://t.co/noYJadTvvL https://t.co/Q8i0iNmj7e",
+      "truncated": false,
+      "display_text_range": [
+        0,
+        116
+      ],
+      "entities": {
+        "hashtags": [
+        ],
+        "symbols": [
+        ],
+        "user_mentions": [
+        ],
+        "urls": [
+          {
+            "url": "https://t.co/noYJadTvvL",
+            "expanded_url": "http://hill.cm/tXmNWKj",
+            "display_url": "hill.cm/tXmNWKj",
+            "indices": [
+              93,
+              116
+            ]
+          }
+        ],
+        "media": [
+          {
+            "id": 1289359449208107009,
+            "id_str": "1289359449208107009",
+            "indices": [
+              117,
+              140
+            ],
+            "media_url": "http://pbs.twimg.com/media/EeS5lnXXsAEcSMe.png",
+            "media_url_https": "https://pbs.twimg.com/media/EeS5lnXXsAEcSMe.png",
+            "url": "https://t.co/Q8i0iNmj7e",
+            "display_url": "pic.twitter.com/Q8i0iNmj7e",
+            "expanded_url": "https://twitter.com/thehill/status/1289359451393155072/photo/1",
+            "type": "photo",
+            "sizes": {
+              "medium": {
+                "w": 640,
+                "h": 360,
+                "resize": "fit"
+              },
+              "small": {
+                "w": 640,
+                "h": 360,
+                "resize": "fit"
+              },
+              "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "large": {
+                "w": 640,
+                "h": 360,
+                "resize": "fit"
+              }
+            }
+          }
+        ]
+      },
+      "extended_entities": {
+        "media": [
+          {
+            "id": 1289359449208107009,
+            "id_str": "1289359449208107009",
+            "indices": [
+              117,
+              140
+            ],
+            "media_url": "http://pbs.twimg.com/media/EeS5lnXXsAEcSMe.png",
+            "media_url_https": "https://pbs.twimg.com/media/EeS5lnXXsAEcSMe.png",
+            "url": "https://t.co/Q8i0iNmj7e",
+            "display_url": "pic.twitter.com/Q8i0iNmj7e",
+            "expanded_url": "https://twitter.com/thehill/status/1289359451393155072/photo/1",
+            "type": "photo",
+            "sizes": {
+              "medium": {
+                "w": 640,
+                "h": 360,
+                "resize": "fit"
+              },
+              "small": {
+                "w": 640,
+                "h": 360,
+                "resize": "fit"
+              },
+              "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "large": {
+                "w": 640,
+                "h": 360,
+                "resize": "fit"
+              }
+            },
+            "ext_alt_text": "None"
+          }
+        ]
+      },
+      "source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
+      "in_reply_to_status_id": "None",
+      "in_reply_to_status_id_str": "None",
+      "in_reply_to_user_id": "None",
+      "in_reply_to_user_id_str": "None",
+      "in_reply_to_screen_name": "None",
+      "user": {
+        "id": 1917731,
+        "id_str": "1917731",
+        "name": "The Hill",
+        "screen_name": "thehill",
+        "location": "Washington, DC",
+        "description": "The Hill is the premier source for policy and political news. Follow for tweets on what's happening in Washington, breaking news and retweets of our reporters.",
+        "url": "http://t.co/t414UtTRv4",
+        "entities": {
+          "url": {
+            "urls": [
+              {
+                "url": "http://t.co/t414UtTRv4",
+                "expanded_url": "http://www.thehill.com",
+                "display_url": "thehill.com",
+                "indices": [
+                  0,
+                  22
+                ]
+              }
+            ]
+          },
+          "description": {
+            "urls": [
+            ]
+          }
+        },
+        "protected": false,
+        "followers_count": 3947104,
+        "friends_count": 267,
+        "listed_count": 26704,
+        "created_at": "Thu Mar 22 18:15:18 +0000 2007",
+        "favourites_count": 10,
+        "utc_offset": "None",
+        "time_zone": "None",
+        "geo_enabled": false,
+        "verified": true,
+        "statuses_count": 781422,
+        "lang": "None",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "9AE4E8",
+        "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_tile": true,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/907330975587336193/tw7JPE5v_normal.jpg",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/907330975587336193/tw7JPE5v_normal.jpg",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/1917731/1434034905",
+        "profile_image_extensions_alt_text": "None",
+        "profile_banner_extensions_alt_text": "None",
+        "profile_link_color": "FF0021",
+        "profile_sidebar_border_color": "ADADAA",
+        "profile_sidebar_fill_color": "EBEBEB",
+        "profile_text_color": "000000",
+        "profile_use_background_image": true,
+        "has_extended_profile": false,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+      },
+      "geo": "None",
+      "coordinates": "None",
+      "place": "None",
+      "contributors": "None",
+      "is_quote_status": false,
+      "retweet_count": 127,
+      "favorite_count": 132,
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "lang": "en"
+    },
+    "retweet_count": 367,
+    "favorite_count": 951,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+  "is_quote_status": true,
+  "quoted_status_id": 1289359451393155072,
+  "quoted_status_id_str": "1289359451393155072",
+  "quoted_status_permalink": {
+    "url": "https://t.co/dAxlki9Sx4",
+    "expanded": "https://twitter.com/thehill/status/1289359451393155072",
+    "display": "twitter.com/thehill/status…"
+  },
+  "retweet_count": 367,
+  "favorite_count": 0,
+  "favorited": false,
+  "retweeted": false,
+  "lang": "en"
+}
