@@ -2,7 +2,7 @@ from pathlib import Path
 import jsonlines
 from geoalchemy2.elements import WKTElement
 from base import Session
-from models.account import Account
+from models.account import Account, SavedAccountType
 from models.country import Country
 from models.hashtag import Hashtag
 from models.tweet import Tweet
@@ -83,13 +83,55 @@ def save_tweet(obj):
                     friends_count=obj['user']['friends_count'],
                     statuses_count=obj['user']['statuses_count']
                 )
-                accounts_map[account.id] = True
+                accounts_map[account.id] = SavedAccountType.FULL
             else:
                 # find user in database
                 account = session.query(Account).filter(Account.id == user_id).scalar()
 
             # add user as an author of the tweet
             tweet.author = account
+
+        # user mentions
+        if (
+                obj['entities'] is not None and
+                obj['entities']['user_mentions'] is not None and
+                len(obj['entities']['user_mentions'])
+        ):
+            mentions = []
+
+            # map all hashtags
+            for mentioned_user in obj['entities']['user_mentions']:
+
+                user_id = mentioned_user['id']
+
+                # if user is mentioned in the status multiple times (not saved to the db yet, already in accounts hashmap)
+                # or the user mentions himself before being saved to db
+                # (they're saved at the end of save_tweet function along the tweet itself)
+
+                if (
+                        user_id in map(lambda x: x.id, mentions) or
+                        user_id == tweet.author.id
+                ):
+                    continue
+
+                # check whether the hashtag wasn't previously saved
+                if not user_id in accounts_map:
+                    account = Account(
+                        id=mentioned_user['id'],
+                        screen_name=mentioned_user['screen_name'],
+                        name=obj['user']['name'],
+                        description=obj['user']['description'],
+                    )
+                    accounts_map[user_id] = SavedAccountType.MENTION
+                else:
+                    # find user in database
+                    account = session.query(Account).filter(Account.id == user_id).scalar()
+
+                # append to the array of mentions
+                mentions.append(account)
+
+            # associate hashtags array with tweet
+            tweet.mentions = mentions
 
         # if place is present in tweet and has all fields present
         if (
