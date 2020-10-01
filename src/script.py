@@ -8,16 +8,6 @@ from models.hashtag import Hashtag
 from models.tweet import Tweet
 
 
-def get_input_files():
-    """
-    Loads all jsonl files from data folder
-    :return: array of file paths
-    """
-    file_ext = '.jsonl'
-    data_dir = Path('data')
-    return (entry for entry in data_dir.iterdir() if entry.is_file() and entry.name.endswith(file_ext))
-
-
 # parse each json line of the each file
 def parse_each_file(files, func):
     """
@@ -206,15 +196,22 @@ hashtags_map = {}
 # Debug mode
 DEBUG = True
 
-if (DEBUG):
+# Console logs
+LOG = True
+
+if DEBUG:
     parse_file('data/test_2000.jsonl', save_tweet)
-    print('len(accounts_map)', len(accounts_map))
-    print('len(countries_map)', len(countries_map))
-    print('len(tweets_map)', len(tweets_map))
-    print('len(hashtags_map)', len(hashtags_map))
 else:
-    files = get_input_files()
+    file_ext = '.jsonl'
+    data_dir = Path('data')
+    files = (entry for entry in data_dir.iterdir() if entry.is_file() and entry.name.endswith(file_ext))
     parse_each_file(files, save_tweet)
+
+if LOG:
+    print(len(accounts_map), ' accounts imported.')
+    print(len(countries_map), ' countries imported.')
+    print(len(tweets_map), ' tweets imported')
+    print(len(hashtags_map), ' hashtags imported.')
 
 session.commit()
 session.close()
