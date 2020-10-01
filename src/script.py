@@ -1,5 +1,6 @@
 from pathlib import Path
 import jsonlines
+from geoalchemy2.elements import WKTElement
 from base import Session
 from models.account import Account
 from models.country import Country
@@ -47,14 +48,19 @@ def save_tweet(obj):
     key = obj['id_str']
     if not key in tweets_map:
 
+        location = None
+        if obj['geo']:
+            location = WKTElement(f"POINT({obj['geo']['coordinates'][0]} {obj['geo']['coordinates'][1]})", srid=4326)
+
         tweet = Tweet(
             id=obj['id_str'],
             content=obj['full_text'],
-            location=None,  # Todo
+            location=location,
             retweet_count=obj['retweet_count'],
             favorite_count=obj['favorite_count'],
             happened_at=obj['created_at']
         )
+
         tweets_map[key] = True
 
         # if user is present in tweet
