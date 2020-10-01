@@ -42,20 +42,19 @@ class Tweet(Base):
 
     def __init__(
             self,
+            id,
             content,
             location,
             retweet_count,
             favorite_count,
             happened_at,
-            author_id,
-            country_id,
-            parent_id
     ):
+        self.id = id
         self.content = content
         self.location = location
         self.retweet_count = retweet_count
         self.favorite_count = favorite_count
         self.happened_at = happened_at
-        self.author_id = author_id
-        self.country_id = country_id
-        self.parent_id = parent_id
+
+    def __str__(self):
+        return f"id: {self.id}\ncontent: {self.content}\nlocation: {self.location}\nretweet_count: {self.retweet_count}\nfavorite_count: {self.favorite_count}\nhappened_at: {self.happened_at}\n"

@@ -44,19 +44,40 @@ def save_tweet(obj):
     Saves each tweet to the database
     :param obj:
     """
-    account = Account(
-        obj['user']['id'],
-        obj['user']['screen_name'],
-        obj['user']['name'],
-        obj['user']['description'],
-        obj['user']['followers_count'],
-        obj['user']['friends_count'],
-        obj['user']['statuses_count']
+    tweet = Tweet(
+        id=obj['id_str'],
+        content=obj['full_text'],
+        location=None,
+        retweet_count=obj['retweet_count'],
+        favorite_count=None,  # Todo
+        happened_at=obj['created_at']
     )
 
-    if not account.id in accounts_map:
-        accounts_map[account.id] = True
-        session.add(account)
+    # if user is present in tweet
+    if obj['user'] is not None:
+
+        # if user is not previously added in hashmap of accounts create new user
+        key = obj['user']['id']
+        if not key in accounts_map:
+            account = Account(
+                id=obj['user']['id'],
+                screen_name=obj['user']['screen_name'],
+                name=obj['user']['name'],
+                description=obj['user']['description'],
+                followers_count=obj['user']['followers_count'],
+                friends_count=obj['user']['friends_count'],
+                statuses_count=obj['user']['statuses_count']
+            )
+            accounts_map[account.id] = True
+        else:
+            # find user in database
+            account = session.query(Account).filter(Account.id == key).scalar()
+
+        # add user as an author of the tweet
+        tweet.author = account
+
+    # save tweet object into the db
+    session.add(tweet)
 
 
 # init session
@@ -68,7 +89,6 @@ hashtags_map = {}
 countries_map = {}
 tweets_map = {}
 
-
 # Debug mode
 DEBUG = True
 
@@ -78,5 +98,6 @@ else:
     files = get_input_files()
     parse_each_file(files, save_tweet)
 
+print('sesss', session)
 session.commit()
 session.close()
