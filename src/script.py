@@ -6,6 +6,7 @@ from models.account import Account, SavedAccountType
 from models.country import Country
 from models.hashtag import Hashtag
 from models.tweet import Tweet
+from datetime import datetime
 
 
 # parse each json line of the each file
@@ -15,9 +16,9 @@ def parse_each_file(files, func):
     :param files:
     :param func:
     """
-    for file, index in files:
+    for index, file in enumerate(files):
         if LOG:
-            print_stats(f"Reading file {index+1}/{len(files)} ...")
+            print_stats(f"Reading file {index + 1}/{len(list(files))} ...")
         parse_file(file, func)
 
 
@@ -30,14 +31,19 @@ def parse_file(file, func):
     with jsonlines.open(file) as reader:
         for obj in reader:
             func(obj)
+    if LOG:
+        end_time = datetime.now()
+        print('Duration: {}'.format(end_time - start_time))
 
-def print_stats(additional_log = ''):
+
+def print_stats(additional_log=''):
     if additional_log:
         print(additional_log)
     print(len(accounts_map), 'accounts imported.')
     print(len(countries_map), 'countries imported.')
     print(len(tweets_map), 'tweets imported')
     print(len(hashtags_map), 'hashtags imported.\n')
+
 
 def save_tweet(obj):
     """
@@ -208,10 +214,11 @@ tweets_map = {}
 hashtags_map = {}
 
 # Debug mode
-DEBUG = True
+DEBUG = False
 
 # Console logs
 LOG = True
+start_time = datetime.now()
 
 if DEBUG:
     parse_file('data/test_2000.jsonl', save_tweet)
