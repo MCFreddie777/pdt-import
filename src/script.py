@@ -107,6 +107,36 @@ def save_tweet(obj):
             # add place as an country of the tweet
             tweet.country = country
 
+        if (
+                obj['entities'] is not None and
+                obj['entities']['hashtags'] is not None and
+                len(obj['entities']['hashtags'])
+        ):
+            hashtags = []
+
+            # map all hashtags
+            for hashtag_obj in obj['entities']['hashtags']:
+
+                # key in hashtags of current tweet, not saved to the db yet, already in hashtag hashmap
+                if key in map(lambda x: x.value, hashtags):
+                    continue
+
+                # check whether the hashtag wasn't previously saved
+                key = hashtag_obj['text']
+                if not key in hashtags_map:
+                    hashtags_map[key] = True
+
+                    hashtag = Hashtag(hashtag_obj['text'])
+                else:
+                    # find hashtag in database
+                    hashtag = session.query(Hashtag).filter(Hashtag.value == key).scalar()
+
+                # append to the array of hashtags
+                hashtags.append(hashtag)
+
+            # associate hashtags array with tweet
+            tweet.hashtags = hashtags
+
         # save tweet object into the db
         session.add(tweet)
 
@@ -116,9 +146,9 @@ session = Session()
 
 # declare hashmaps for objects
 accounts_map = {}
-hashtags_map = {}
 countries_map = {}
 tweets_map = {}
+hashtags_map = {}
 
 # Debug mode
 DEBUG = True
