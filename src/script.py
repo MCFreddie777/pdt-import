@@ -78,6 +78,11 @@ def save_tweet(obj):
                 # find user in database
                 account = session.query(Account).filter(Account.id == user_id).scalar()
 
+                # user was previously saved as user_mention and needs to be updated with new attributes which are not present in user_mentions
+                if accounts_map[user_id] == SavedAccountType.MENTION:
+                    account.update(obj['user'])
+                    accounts_map[account.id] = SavedAccountType.FULL
+
             # add user as an author of the tweet
             tweet.author = account
 
