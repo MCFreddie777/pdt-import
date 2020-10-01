@@ -43,6 +43,27 @@ class Account(Base):
         self.friends_count = friends_count
         self.statuses_count = statuses_count
 
+    def update(self, obj):
+        if type(obj) == Account:
+            attributes = [a for a in dir(obj) if not a.startswith('__') and not a.startswith('_')]
+            for key in attributes:
+                try:
+                    if getattr(self, key) != getattr(obj, key):
+                        setattr(self, key, getattr(obj, key))
+                except AttributeError:
+                    continue
+        else:
+            if type(obj) == dict:
+                attributes = list(obj)
+                for key in attributes:
+                    try:
+                        if  getattr(self, key) != obj[key]:
+                            setattr(self, key, obj[key])
+                    except AttributeError:
+                        continue
+            else:
+                return
+
     def __str__(self):
         return f"id: {self.id}\nscreen_name: {self.screen_name}\nname: {self.name}\ndescription: {self.description}\nfollowers_count: {self.followers_count}\nfriends_count: {self.friends_count}\nstatuses_count: {self.statuses_count}\n"
 
