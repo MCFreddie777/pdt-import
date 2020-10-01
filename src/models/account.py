@@ -15,7 +15,7 @@ class Account(Base):
 
     # properties
     id = Column('id', BigInteger, primary_key=True)
-    screen_name = Column('screen_name', String(200), unique=True)
+    screen_name = Column('screen_name', String(200))
     name = Column('name', String(200))
     description = Column('description', Text)
     followers_count = Column('followers_count', Integer)
