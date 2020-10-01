@@ -114,7 +114,11 @@ tweets_map = {}
 DEBUG = True
 
 if (DEBUG):
-    parse_file('data/test.jsonl', save_tweet)
+    parse_file('data/test_2000.jsonl', save_tweet)
+    print('len(accounts_map)', len(accounts_map))
+    print('len(countries_map)', len(countries_map))
+    print('len(tweets_map)', len(tweets_map))
+    print('len(accounts_map)', len(accounts_map))
 else:
     files = get_input_files()
     parse_each_file(files, save_tweet)
