@@ -15,7 +15,9 @@ def parse_each_file(files, func):
     :param files:
     :param func:
     """
-    for file in files:
+    for file, index in files:
+        if LOG:
+            print_stats(f"Reading file {index+1}/{len(files)} ...")
         parse_file(file, func)
 
 
@@ -29,6 +31,13 @@ def parse_file(file, func):
         for obj in reader:
             func(obj)
 
+def print_stats(additional_log = ''):
+    if additional_log:
+        print(additional_log)
+    print(len(accounts_map), 'accounts imported.')
+    print(len(countries_map), 'countries imported.')
+    print(len(tweets_map), 'tweets imported')
+    print(len(hashtags_map), 'hashtags imported.\n')
 
 def save_tweet(obj):
     """
@@ -213,10 +222,7 @@ else:
     parse_each_file(files, save_tweet)
 
 if LOG:
-    print(len(accounts_map), ' accounts imported.')
-    print(len(countries_map), ' countries imported.')
-    print(len(tweets_map), ' tweets imported')
-    print(len(hashtags_map), ' hashtags imported.')
+    print_stats()
 
 session.commit()
 session.close()
