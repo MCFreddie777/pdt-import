@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Text, Integer, String, BigInteger, ForeignKey, TIMESTAMP, Table
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
 from geoalchemy2 import Geometry
 from base import Base
 
@@ -36,7 +36,7 @@ class Tweet(Base):
     # relationships
     country = relationship("Country")
     author = relationship("Account")
-    parent = relationship("Tweet")
+    parent = relationship("Tweet", remote_side=[id])
     hashtags = relationship("Hashtag", secondary=tweet_hashtags_association)
     mentions = relationship("Account", secondary=tweet_accounts_association)
 

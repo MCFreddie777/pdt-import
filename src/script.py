@@ -48,6 +48,11 @@ def save_tweet(obj):
     key = obj['id_str']
     if not key in tweets_map:
 
+        # dive into recursion until we hit the original tweet
+        parent_tweet = None
+        if 'retweeted_status' in obj and obj['retweeted_status'] is not None:
+            parent_tweet = save_tweet(obj['retweeted_status'])
+
         location = None
         if obj['geo']:
             location = WKTElement(f"POINT({obj['geo']['coordinates'][0]} {obj['geo']['coordinates'][1]})", srid=4326)
@@ -125,7 +130,6 @@ def save_tweet(obj):
                 key = hashtag_obj['text']
                 if not key in hashtags_map:
                     hashtags_map[key] = True
-
                     hashtag = Hashtag(hashtag_obj['text'])
                 else:
                     # find hashtag in database
@@ -137,8 +141,14 @@ def save_tweet(obj):
             # associate hashtags array with tweet
             tweet.hashtags = hashtags
 
+        # set the parent tweet from the recursion
+        if parent_tweet:
+            tweet.parent = parent_tweet
+
         # save tweet object into the db
         session.add(tweet)
+
+        return tweet
 
 
 # init session
