@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer
+from sqlalchemy import Column, String, Integer, Index
 from sqlalchemy.orm import relationship
 from base import Base
 
@@ -10,6 +10,7 @@ class Country(Base):
     id = Column('id', Integer, primary_key=True)
     code = Column('code', String(2))
     name = Column('name', String(200))
+    # __table_args__ = (Index('country_composite', "code", "name"),)
 
     # relationships
     tweets = relationship("Tweet")

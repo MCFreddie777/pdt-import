@@ -47,9 +47,9 @@ def save_tweet(obj):
     tweet = Tweet(
         id=obj['id_str'],
         content=obj['full_text'],
-        location=None,
+        location=None,  # Todo
         retweet_count=obj['retweet_count'],
-        favorite_count=None,  # Todo
+        favorite_count=obj['favorite_count'],
         happened_at=obj['created_at']
     )
 
@@ -76,6 +76,27 @@ def save_tweet(obj):
         # add user as an author of the tweet
         tweet.author = account
 
+    # if place is present in tweet and has all fields present
+    if (
+            obj['place'] is not None and
+            obj['place']['country_code'] and
+            obj['place']['country_code']
+    ):
+        # if place is not previously added in hashmap of countries create a new country
+        key = obj['place']['country_code']
+        if not key in countries_map:
+            country = Country(
+                code=obj['place']['country_code'],
+                name=obj['place']['country']
+            )
+            countries_map[country.code] = True
+        else:
+            # find country in database
+            country = session.query(Country).filter(Country.code == key).scalar()
+
+        # add place as an country of the tweet
+        tweet.country = country
+
     # save tweet object into the db
     session.add(tweet)
 
@@ -98,6 +119,5 @@ else:
     files = get_input_files()
     parse_each_file(files, save_tweet)
 
-print('sesss', session)
 session.commit()
 session.close()

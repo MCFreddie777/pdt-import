@@ -30,7 +30,7 @@ class Tweet(Base):
     favorite_count = Column('favorite_count', Integer)
     happened_at = Column('happened_at', TIMESTAMP(timezone=True))
     author_id = Column('author_id', BigInteger, ForeignKey("accounts.id"), nullable=False)
-    country_id = Column('country_id', Integer, ForeignKey("countries.id"), nullable=False)
+    country_id = Column('country_id', Integer, ForeignKey("countries.id"), nullable=True)
     parent_id = Column('parent_id', String(20), ForeignKey("tweets.id"), nullable=True)
 
     # relationships
