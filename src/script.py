@@ -45,8 +45,8 @@ def save_tweet(obj):
     Saves each tweet to the database
     :param obj:
     """
-    key = obj['id_str']
-    if not key in tweets_map:
+    tweet_id = obj['id_str']
+    if not tweet_id in tweets_map:
 
         # dive into recursion until we hit the original tweet
         parent_tweet = None
@@ -66,14 +66,14 @@ def save_tweet(obj):
             happened_at=obj['created_at']
         )
 
-        tweets_map[key] = True
+        tweets_map[tweet_id] = True
 
         # if user is present in tweet
         if obj['user'] is not None:
 
             # if user is not previously added in hashmap of accounts create new user
-            key = obj['user']['id']
-            if not key in accounts_map:
+            user_id = obj['user']['id']
+            if not user_id in accounts_map:
                 account = Account(
                     id=obj['user']['id'],
                     screen_name=obj['user']['screen_name'],
@@ -86,7 +86,7 @@ def save_tweet(obj):
                 accounts_map[account.id] = True
             else:
                 # find user in database
-                account = session.query(Account).filter(Account.id == key).scalar()
+                account = session.query(Account).filter(Account.id == user_id).scalar()
 
             # add user as an author of the tweet
             tweet.author = account
@@ -98,8 +98,8 @@ def save_tweet(obj):
                 obj['place']['country_code']
         ):
             # if place is not previously added in hashmap of countries create a new country
-            key = obj['place']['country_code']
-            if not key in countries_map:
+            country_code = obj['place']['country_code']
+            if not country_code in countries_map:
                 country = Country(
                     code=obj['place']['country_code'],
                     name=obj['place']['country']
@@ -107,7 +107,7 @@ def save_tweet(obj):
                 countries_map[country.code] = True
             else:
                 # find country in database
-                country = session.query(Country).filter(Country.code == key).scalar()
+                country = session.query(Country).filter(Country.code == country_code).scalar()
 
             # add place as an country of the tweet
             tweet.country = country
@@ -122,18 +122,19 @@ def save_tweet(obj):
             # map all hashtags
             for hashtag_obj in obj['entities']['hashtags']:
 
-                # key in hashtags of current tweet, not saved to the db yet, already in hashtag hashmap
-                if key in map(lambda x: x.value, hashtags):
+                # check whether the hashtag wasn't previously saved
+                hashtag_id = hashtag_obj['text']
+
+                # hashtag_id in hashtags of current tweet, not saved to the db yet, already in hashtag hashmap
+                if hashtag_id in map(lambda x: x.value, hashtags):
                     continue
 
-                # check whether the hashtag wasn't previously saved
-                key = hashtag_obj['text']
-                if not key in hashtags_map:
-                    hashtags_map[key] = True
+                if not hashtag_id in hashtags_map:
+                    hashtags_map[hashtag_id] = True
                     hashtag = Hashtag(hashtag_obj['text'])
                 else:
                     # find hashtag in database
-                    hashtag = session.query(Hashtag).filter(Hashtag.value == key).scalar()
+                    hashtag = session.query(Hashtag).filter(Hashtag.value == hashtag_id).scalar()
 
                 # append to the array of hashtags
                 hashtags.append(hashtag)

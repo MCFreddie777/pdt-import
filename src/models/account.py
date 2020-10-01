@@ -1,6 +1,13 @@
 from sqlalchemy import Column, String, Integer, BigInteger, Text
 from sqlalchemy.orm import relationship
 from base import Base
+from enum import Enum
+
+
+# This enum says clearly to user hashmap whether the user was saved into DB from tweet.mentions or from tweet.author
+class SavedAccountType(Enum):
+    MENTION = True
+    FULL = False
 
 
 class Account(Base):
@@ -8,7 +15,7 @@ class Account(Base):
 
     # properties
     id = Column('id', BigInteger, primary_key=True)
-    screen_name = Column('screen_name', String(200))
+    screen_name = Column('screen_name', String(200), unique=True)
     name = Column('name', String(200))
     description = Column('description', Text)
     followers_count = Column('followers_count', Integer)
@@ -18,7 +25,16 @@ class Account(Base):
     # relationships
     tweets = relationship("Tweet")
 
-    def __init__(self, id, screen_name, name, description, followers_count, friends_count, statuses_count):
+    def __init__(
+            self,
+            id,
+            screen_name,
+            name,
+            description,
+            followers_count=None,
+            friends_count=None,
+            statuses_count=None
+    ):
         self.id = id
         self.screen_name = screen_name
         self.name = name
@@ -29,3 +45,6 @@ class Account(Base):
 
     def __str__(self):
         return f"id: {self.id}\nscreen_name: {self.screen_name}\nname: {self.name}\ndescription: {self.description}\nfollowers_count: {self.followers_count}\nfriends_count: {self.friends_count}\nstatuses_count: {self.statuses_count}\n"
+
+    def __repr__(self):
+        return str(self)
