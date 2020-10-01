@@ -18,8 +18,12 @@ def parse_each_file(files, func):
     """
     for index, file in enumerate(files):
         if LOG:
-            print_stats(f"Reading file {index + 1}/{len(list(files))} ...")
+            print(f"Reading file {index + 1}/{len(files)} ({file}) ...")
+
         parse_file(file, func)
+
+        if LOG:
+            print_stats()
 
 
 def parse_file(file, func):
@@ -31,9 +35,10 @@ def parse_file(file, func):
     with jsonlines.open(file) as reader:
         for obj in reader:
             func(obj)
-    if LOG:
-        end_time = datetime.now()
-        print('Duration: {}'.format(end_time - start_time))
+
+        if LOG:
+            end_time = datetime.now()
+            print(f'Duration: {end_time - start_time}\n')
 
 
 def print_stats(additional_log=''):
@@ -42,7 +47,7 @@ def print_stats(additional_log=''):
     print(len(accounts_map), 'accounts imported.')
     print(len(countries_map), 'countries imported.')
     print(len(tweets_map), 'tweets imported')
-    print(len(hashtags_map), 'hashtags imported.\n')
+    print(len(hashtags_map), 'hashtags imported.')
 
 
 def save_tweet(obj):
@@ -222,15 +227,14 @@ LOG = True
 start_time = datetime.now()
 
 if DEBUG:
-    parse_file('data/test_2000.jsonl', save_tweet)
+    parse_file('data_test/test_10000.jsonl', save_tweet)
 else:
-    file_ext = '.jsonl'
     data_dir = Path('data')
-    files = (entry for entry in data_dir.iterdir() if entry.is_file() and entry.name.endswith(file_ext))
-    parse_each_file(files, save_tweet)
+    files = (entry for entry in data_dir.iterdir() if entry.is_file() and entry.name.endswith('.jsonl'))
+    parse_each_file(list(files), save_tweet)
 
 if LOG:
-    print_stats()
+    print_stats('Total:')
 
 session.commit()
 session.close()
