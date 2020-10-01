@@ -59,8 +59,9 @@ def save_tweet(obj):
             parent_tweet = save_tweet(obj['retweeted_status'])
 
         location = None
-        if obj['geo']:
-            location = WKTElement(f"POINT({obj['geo']['coordinates'][0]} {obj['geo']['coordinates'][1]})", srid=4326)
+        if obj['coordinates'] and obj['coordinates']['coordinates']:
+            location = WKTElement(
+                f"POINT({obj['coordinates']['coordinates'][0]} {obj['coordinates']['coordinates'][1]})", srid=4326)
 
         tweet = Tweet(
             id=obj['id_str'],
