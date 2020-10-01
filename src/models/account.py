@@ -18,10 +18,14 @@ class Account(Base):
     # relationships
     tweets = relationship("Tweet")
 
-    def __init__(self, screen_name, name, description, followers_count, friends_count, statuses_count):
+    def __init__(self, id, screen_name, name, description, followers_count, friends_count, statuses_count):
+        self.id = id
         self.screen_name = screen_name
         self.name = name
         self.description = description
         self.followers_count = followers_count
         self.friends_count = friends_count
         self.statuses_count = statuses_count
+
+    def __str__(self):
+        return f"id: {self.id}\nscreen_name: {self.screen_name}\nname: {self.name}\ndescription: {self.description}\nfollowers_count: {self.followers_count}\nfriends_count: {self.friends_count}\nstatuses_count: {self.statuses_count}\n"
