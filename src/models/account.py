@@ -30,7 +30,7 @@ class Account(Base):
             id,
             screen_name,
             name,
-            description,
+            description=None,
             followers_count=None,
             friends_count=None,
             statuses_count=None

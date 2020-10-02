@@ -115,7 +115,7 @@ def save_tweet(obj):
         ):
             mentions = []
 
-            # map all hashtags
+            # map all mentions
             for mentioned_user in obj['entities']['user_mentions']:
 
                 user_id = mentioned_user['id']
@@ -130,13 +130,12 @@ def save_tweet(obj):
                 ):
                     continue
 
-                # check whether the hashtag wasn't previously saved
+                # check whether the mention wasn't previously saved in hashmap
                 if not user_id in accounts_map:
                     account = Account(
                         id=mentioned_user['id'],
                         screen_name=mentioned_user['screen_name'],
-                        name=obj['user']['name'],
-                        description=obj['user']['description'],
+                        name=mentioned_user['user']['name'],
                     )
                     accounts_map[user_id] = SavedAccountType.MENTION
                 else:
@@ -153,7 +152,7 @@ def save_tweet(obj):
         if (
                 obj['place'] is not None and
                 obj['place']['country_code'] and
-                obj['place']['country_code']
+                obj['place']['country']
         ):
             # if place is not previously added in hashmap of countries create a new country
             country_code = obj['place']['country_code']
